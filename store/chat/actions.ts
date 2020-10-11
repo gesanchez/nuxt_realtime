@@ -1,4 +1,5 @@
-import { StateChat } from './interfaces';
+import { StateChat } from './interfaces'
+import { Message } from '@/interfaces/message'
 
 export default {
   /**
@@ -36,6 +37,14 @@ export default {
       commit('SETUSERS', users)
     });
 
+    this.$socket.emit("get-messages", (messages: Array<Message>) => {
+      commit('SETMESSAGES', messages)
+    });
+
+    this.$socket.on('message', (msg: Message) => {
+      commit('ADDMESSAGES', msg)
+    });
+
   },
   /**
    * GETUSERS
@@ -46,6 +55,20 @@ export default {
     this.$socket.emit("get-users", (res) => {
       commit('SETUSERS', res)
     });
+  },
+  /**
+   * SENDMESSAGE
+   * 
+   * @description Metodo para enviar un mensaje al chat room
+   */
+  SENDMESSAGE({ commit }: { commit: any }, message: string): void {
+    const username = this.$auth.$storage.getUniversal("username")
+    const msg: Message = {
+      username: username,
+      message: message
+    }
+    this.$socket.emit('message', msg)
+    commit('ADDMESSAGES', msg)
   },
   /**
    * LOGOUT

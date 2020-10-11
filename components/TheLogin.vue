@@ -37,7 +37,7 @@ import { Action, Getter } from 'vuex-class'
     ValidationProvider
   }
 })
-export default class LoginForm extends Vue {
+export default class TheLogin extends Vue {
   private username: string = ''
   @Getter('chat/ISLOGIN') isLogin: boolean
   @Action('chat/JOINUSER') join: (username: string) => Promise<string>

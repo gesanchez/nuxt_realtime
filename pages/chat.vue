@@ -1,11 +1,15 @@
 <template>
-  <div>
+  <div class="chat">
     <UsersPanel />
     <TheHeader />
+    <InputSender />
     <div class="container-fluid">
       <div class="row" v-total-height>
-        <div class="col-4"></div>
-        <div class="col-8">chat</div>
+        <div class="col-12">
+          <div v-for="(element, index) in messages" :key="index">
+            <TheBubble :message="element"/>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -13,8 +17,9 @@
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
-import { Action } from "vuex-class";
+import { Action, Getter } from "vuex-class";
 import TotalHeight from '@/directives/total-height'
+import { Message } from '@/interfaces/message'
 
 @Component({
     middleware: 'isAuthenticated',
@@ -23,14 +28,25 @@ import TotalHeight from '@/directives/total-height'
     }
 })
 export default class Chat extends Vue {
-  @Action(`chat/RECONNECT`) join: () => void;
-  @Action('chat/GETUSERS') getUsers: () => void;
+  @Action(`chat/RECONNECT`) join: () => void
+  @Action('chat/GETUSERS') getUsers: () => void
+  @Getter('chat/GETMESSAGES') messages: Array<Message>
   created() {
     this.join();
     this.getUsers();
   }
 }
 </script>
+<style lang="scss" scoped>
+@import '@/assets/sass/mixins';
+@import '@/assets/sass/variables';
 
-<style>
+$wrap: 'chat';
+
+.#{$wrap} {
+  padding-left: 300px;
+  padding-bottom: 70px;
+  padding-top: 70px;
+  overflow-x: auto;
+}
 </style>

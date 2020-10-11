@@ -2,8 +2,8 @@ const app = require('express')();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const PORT = 5000;
-const users = []
 const Users = require('./users');
+const Messages = require('./messages');
 
 app.get('/', (req, res) => {
   res.send('<h1>Hello world</h1>');
@@ -29,6 +29,18 @@ io.on('connection', (socket) => {
       console.log("Logout: " + user);
       Users.logout(user);
       socket.broadcast.emit('user-connected', Users.getUsers());
+    });
+
+    socket.on('message', (message, fn) => {
+      console.log("Message: " + message);
+      Messages.addMessage(message.username, message.message);
+      socket.broadcast.emit('message', message);
+    });
+
+    socket.on('get-messages', (fn) => {
+      if (fn) {
+        fn(Messages.getAllMessage());
+      }
     });
 
     socket.on('disconnect', (reason) => {

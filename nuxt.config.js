@@ -66,6 +66,6 @@ export default {
     }
   },
   publicRuntimeConfig: {
-    socketUrl: process.env.SOCKET_URL || "https://85a797e710ae.ngrok.io"
+    socketUrl: process.env.SOCKET_URL || "http://localhost:5000"
   }
 }

@@ -1,6 +1,8 @@
+import { Message } from '@/interfaces/message'
+
 export interface StateChat {
   users: Array<any>;
-  messages: Array<string>;
+  messages: Array<Message>;
   isLogin: boolean;
   actUser: string;
 }

@@ -1,5 +1,6 @@
-import { StateChat } from './interfaces';
-import { filter } from 'lodash';
+import { StateChat } from './interfaces'
+import { filter } from 'lodash'
+import { Message } from '@/interfaces/message'
 
 export default {
   ISLOGIN(state: StateChat): boolean {
@@ -12,5 +13,8 @@ export default {
     return filter(state.users, (x: string) => {
       return x !== state.actUser;
     })
+  },
+  GETMESSAGES(state: StateChat): Array<Message> {
+    return state.messages
   }
 }

@@ -38,6 +38,8 @@ $wrap: 'user-panel';
   overflow-x: auto;
   width: 300px;
   height: 100%;
+  left: 0px;
+  top: 0px;
   z-index: 2;
   &__panel-title {
     padding: 10px 20px 10px 20px;

@@ -1,4 +1,7 @@
-# Project create with Nuxt + TypeScript + Socket.io
+# Realtime Chat with Nuxt
+
+Project created with Nuxt + TypeScript + Socket.io
+
 
 ## Build Setup
 
@@ -17,7 +20,7 @@ $ npm run start
 $ npm run generate
 ```
 
-## Launch backend
+## Launch backend (Neccesary)
 ```bash
 # Go to backend folder
 $ cd backend
@@ -25,6 +28,8 @@ $ cd backend
 #Launch server
 $ node index
 
+# If you want expose to internet, execute the following command after node index command
+$ node external
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

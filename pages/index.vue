@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row justify-content-center align-items-center" v-total-height>
-      <div class="col-4">
+      <div class="col-lg-4 col-md-6 col-12">
         <TheLogin />
       </div>
     </div>
