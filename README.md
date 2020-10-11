@@ -1,4 +1,4 @@
-# nuxt_realtime
+# Project create with Nuxt + TypeScript + Socket.io
 
 ## Build Setup
 
@@ -15,6 +15,16 @@ $ npm run start
 
 # generate static project
 $ npm run generate
+```
+
+## Launch backend
+```bash
+# Go to backend folder
+$ cd backend
+
+#Launch server
+$ node index
+
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

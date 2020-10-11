@@ -1,0 +1,17 @@
+@import 'mixins';
+@import 'variables';
+
+.btn {
+  &--primary {
+    background-color: $color-primary;
+    color: $color-white;
+    @include border-radius(0px);
+    &:hover {
+      color: $color-white;
+    }
+    &:focus {
+      outline: none;
+      @include box-shadow(none);
+    }
+  }
+}

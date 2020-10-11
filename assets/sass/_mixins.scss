@@ -1,0 +1,26 @@
+@mixin linear-gradient ($direction, $colorStart, $colorEnd) {
+    background: $colorStart; /* fallback for old browsers */
+    background: -webkit-linear-gradient($direction $colorStart, $colorEnd); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient($direction, $colorStart, $colorEnd)
+}
+
+@mixin box-shadow($properties...) {
+    -moz-box-shadow: $properties;
+    -webkit-box-shadow: $properties;
+    box-shadow: $properties;
+  }
+  
+  @mixin no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none; 
+    -ms-user-select: none;   
+    user-select: none; 
+  }
+
+  @mixin border-radius($radius) {
+    border-radius: $radius;
+    -moz-border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -o-border-radius: $radius;
+  }
+  

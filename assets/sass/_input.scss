@@ -1,0 +1,16 @@
+@import 'mixins';
+@import 'variables';
+
+.form-control {
+  @include border-radius(0px);
+  border-color: $color-gray;
+  &:focus {
+    @include box-shadow(none);
+    border-color: $color-primary;
+  }
+}
+
+.input-invalid-message {
+  color: $color-secondary;
+  font-size: 12px;
+}

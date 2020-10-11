@@ -1,0 +1,16 @@
+@import '@/node_modules/bootstrap/scss/bootstrap';
+@import 'variables';
+@import 'mixins';
+@import 'buttons';
+@import 'input';
+
+html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  color: $body-color;
+  font-size: 100%;
+  font-family: $font-body;
+  @include linear-gradient($body-background-direciton, $body-background-colorStart, $body-background-colorEnd);
+}
