@@ -4,8 +4,8 @@
     <TheHeader />
     <InputSender />
     <div class="container-fluid">
-      <div class="row" v-total-height>
-        <div class="col-12">
+      <div class="row">
+        <div class="col-12" id="container">
           <div v-for="(element, index) in messages" :key="index">
             <TheBubble :message="element"/>
           </div>
@@ -16,10 +16,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator'
+import { Vue, Component, Watch } from 'nuxt-property-decorator'
 import { Action, Getter } from "vuex-class";
 import TotalHeight from '@/directives/total-height'
 import { Message } from '@/interfaces/message'
+import * as $ from 'jquery-slim';
 
 @Component({
     middleware: 'isAuthenticated',
@@ -34,6 +35,13 @@ export default class Chat extends Vue {
   created() {
     this.join();
     this.getUsers();
+  }
+  @Watch('messages')
+  private changedMessage() {
+    this.$nextTick(() => {
+      const total = $(window).scrollTop() + $("#container").height();
+      window.scrollTo(0, total);
+    })
   }
 }
 </script>
